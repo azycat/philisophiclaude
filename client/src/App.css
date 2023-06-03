@@ -1,28 +1,167 @@
-.App {
+body, .App {
   text-align: center;
+  background: white;
 }
 
+body {
+    line-height: 1.5;
+}
+
+/* home page */
+
+.App-header {
+  padding: 10px 0;
+  /* background: #2e7c31; */
+  text-align: center;
+  font-family: Vollkorn;
+}
+
+.App-header h1 {
+    font-weight: 600;
+    margin: 0;
+    min-height: 50pt;
+    display:inline-flex;
+    color: #cc6969;
+    position: relative;
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+  }  
+
 .App-logo {
-  height: 40vmin;
+  height: 10vmin;
   pointer-events: none;
+  display:inline-flex;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }  
+
+.books-home-content {
+    padding: 0 0 80px;
+    flex: 1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.bookshelf {
+    padding: 0 10px 20px;
 }
+
+.bookshelf h2 {
+    padding: 20px 0px 10px;
+}
+
+@media (min-width: 600px) {
+    .bookshelf {
+      padding: 0 20px 40px;
+    }
+  }
+
+.bookshelf-title {
+  margin: 5px;
+  border-bottom: 1px solid #dedede;
+  font-family: Vollkorn;
+}
+
+.bookshelf-books {
+  text-align: center;
+}
+
+/* books grid */
+
+.books-grid {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+}
+
+.books-grid li {
+  padding: 10px 15px;
+  text-align: left;
+}
+
+.book {
+  width: 140px;
+}
+
+.book-title,
+.book-author {
+  font-size: 0.8em;
+}
+
+.book-title {
+  margin-top: 10px;
+}
+
+.book-author {
+  color: #999;
+}
+
+.book-top {
+  position: relative;
+  height: 200px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.book-progress {
+  position: absolute;
+  right: 0;
+  bottom: -10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #60ac5d;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.book-progress h3 {
+  position: relative;
+  bottom: -5px;
+  right: -5px;
+  font-size: 15px;
+}
+
+/* book cover */
+.book-cover {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    background: #eee;
+  }
+  .book-cover-title {
+    padding: 20px 10px 0;
+    text-align: center;
+    font-size: 0.8em;
+  }
+  
+  .loadersmall {
+    margin-top: 5px;
+    border: 5px solid #f3f3f3;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+    border-top: 5px solid #555;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 
 .App-link {
   color: #61dafb;
