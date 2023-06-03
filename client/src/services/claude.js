@@ -11,23 +11,22 @@ const baseUrl = 'api/claude'
 //   return request.then(response => response.data)
 // }
 
-const getNewActivity = () => {
+const getNewActivity = () => { //test msg
   const request = axios.get(`${baseUrl}/new`)
   return request.then(response => response.data)
 }
-
-// const addActivity = activity => {
-//   const request = axios.post(baseUrl, activity)
+// book, history, currentLine, summary, user, message , msgHistory, 
+const sendMessageToClaudeBook = (body) => {
+  const request = axios.post(`${baseUrl}/msgBook`, body);
   
-//   return request.then(response => {
-//     console.log('this got sent back from the backend', response)
-//     return response.data
-//   })
-// }
+  return request.then(response => {
+    console.log('this got sent back from the backend', response)
+    return response.data
+  })
+}
 
 // const deleteAllActivities = () => {
 //   const request = axios.get(`${baseUrl}/delete`)
 //   return request.then(response => response.data)
 // }
-
-export default {  getNewActivity }
+export default {  getNewActivity, sendMessageToClaudeBook }

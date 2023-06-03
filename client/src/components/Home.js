@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import BookShelf from './BookShelf';
 import logo from './logo.svg';
-
+import { Chat } from './Chat';
 export class Home extends Component {    
     // write what needs to be rendered
     render() {
@@ -26,6 +26,7 @@ export class Home extends Component {
                         
                     </div> 
                 </div>
+                <Chat/>
             </div>
         )
     }

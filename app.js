@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express'); // import express module (simplifies routing/requests, among other things)
 const cors = require('cors'); // import the CORS library to allow Cross-origin resource sharing
 const app = express(); // create an instance of the express module (app is the conventional variable name used)
@@ -24,7 +25,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // });
 
 app.get('/api/claude/new', (req, res) => {
-  services.getSingleActivity(req, res);
+    services.getSingleActivity(req, res);
+});
+
+app.post('/api/claude/msgBook', (req, res) => {
+    services.sendMessageWithinBook(req, res);
+});
+
+app.get('/api/book/', (req, res) => {
+    services.getBook(req, res);
 });
 
 // app.get('/api/activities/delete', (req, res) => {
@@ -32,5 +41,5 @@ app.get('/api/claude/new', (req, res) => {
 // });
 
 app.listen(PORT, () => { // start server and listen on specified port
-  console.log(`App is running on ${PORT}`) // confirm server is running and log port to the console
+    console.log(`App is running on ${PORT}`) // confirm server is running and log port to the console
 }) 
