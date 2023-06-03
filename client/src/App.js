@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import React from 'react'
 import './App.css';
 
@@ -9,12 +8,30 @@ import { Meepy } from './components/Meepy';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
+const bookshelves = [
+    { key: 'unread', name: 'Start Reading'},
+    { key: 'reading', name: 'In Progress'}
+];
+
+const books = [
+    { id: 1, title: 'Meep', author: 'mareeyoop', shelf: 'unread', image: "http://books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-GnPVEyb7MOCxDzOYF1PTQRuf6nCss9LMNOSWBpxBrz8Pm2_mFtWMMg_Y1dx92HT7cUoQBeSWjs3oEztBVhUeDFQX6-tWlWz1-feexS0mlJPjotcwFqAg6hBYDXuK_bkyHD-y&source=gbs_api"},
+    { id: 2, title: 'Moop', author: 'quaggy.io', shelf: 'reading'}
+];
+
 function App() {
 	return (
+        <div className="container">
         <Routes>
-            <Route path='/' component=
+            <Route path='/' 
+                element={<Home
+                    bookshelves={bookshelves}
+                    books={books}
+                />} exact />
+            <Route path='/department' element={<Department/>} exact/>
+            <Route path='/meepy' element={<Meepy/>} exact/>
         </Routes>
-		// <div className="App">
+        </div>
+ 		// <div className="App">
 		// 	<div className="books-home">
 		// 		<div className="App-header">
 		// 			<img src={logo} className="App-logo" alt="logo" />
