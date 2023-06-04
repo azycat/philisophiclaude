@@ -29,7 +29,7 @@ class App extends Component {
     render() {
         const { books } = this.state;
         return (
-            <div className="container">
+            <div className="App">
             <Routes>
                 {/* home page */}
                 <Route path='/' 

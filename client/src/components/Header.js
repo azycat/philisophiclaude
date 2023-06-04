@@ -6,14 +6,13 @@ function Header() {
     const navigate = useNavigate();
 
     return(
-        <div className="col-10 App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1
-                role="button"
-                onClick={() => navigate('/')}
-            >
-                Philaude
-            </h1>
+        <div className="App-header">
+            <div className="App-header-title">
+                    <img src={logo} className="App-logo" alt="logo" />
+                    <h1 onClick={() => navigate('/')}>
+                    Philaude
+                    </h1>
+            </div>
         </div>
     )
 }
