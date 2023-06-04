@@ -57,7 +57,7 @@ export class Chat extends Component {
     render () {
         let chats = this.state.chats;
         return (
-            <div>
+            <div className="chat-panel">
             <h1>FullStack Chat AI Tutorial</h1>
         
             <section>

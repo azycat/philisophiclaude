@@ -10,6 +10,7 @@ export class Home extends Component {
         return(
             <div className="books-home">
                {<Header />}
+
                 <div className="books-home-content">
                    <div>
                         {bookshelves.map(shelf => ( //map is a very fancy for each
@@ -21,7 +22,8 @@ export class Home extends Component {
                         
                     </div> 
                 </div>
-             </div>
+                <Chat/>
+            </div>
         )
     }
 }

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html class="TridactylThemeDark" style="" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <link rel="icon" href="http://localhost:3000/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Web site created using create-react-app">
+    <link rel="apple-touch-icon" href="http://localhost:3000/logo192.png">
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="http://localhost:3000/manifest.json">
+    <!--
+      Notice the use of  in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <link rel="stylesheet" href="React%20App_files/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <title>React App</title>
+  <script defer="defer" src="React%20App_files/bundle.js"></script><style type="text/css">@media print {
+        .TridactylStatusIndicator {
+            display: none !important;
+        }
+    }</style><style>body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9pbmRleC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxTQUFTO0VBQ1Q7O2NBRVk7RUFDWixtQ0FBbUM7RUFDbkMsa0NBQWtDO0FBQ3BDOztBQUVBO0VBQ0U7YUFDVztBQUNiIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gIG1hcmdpbjogMDtcbiAgZm9udC1mYW1pbHk6IC1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgJ1NlZ29lIFVJJywgJ1JvYm90bycsICdPeHlnZW4nLFxuICAgICdVYnVudHUnLCAnQ2FudGFyZWxsJywgJ0ZpcmEgU2FucycsICdEcm9pZCBTYW5zJywgJ0hlbHZldGljYSBOZXVlJyxcbiAgICBzYW5zLXNlcmlmO1xuICAtd2Via2l0LWZvbnQtc21vb3RoaW5nOiBhbnRpYWxpYXNlZDtcbiAgLW1vei1vc3gtZm9udC1zbW9vdGhpbmc6IGdyYXlzY2FsZTtcbn1cblxuY29kZSB7XG4gIGZvbnQtZmFtaWx5OiBzb3VyY2UtY29kZS1wcm8sIE1lbmxvLCBNb25hY28sIENvbnNvbGFzLCAnQ291cmllciBOZXcnLFxuICAgIG1vbm9zcGFjZTtcbn1cbiJdLCJzb3VyY2VSb290IjoiIn0= */</style><style>html, body, .root {
+    height: 100%;
+  }
+  
+body, .App {
+  text-align: center;
+  /* background: white; */
+}
+
+body {
+    line-height: 1.5;
+}
+
+/* Header */
+
+.App-header {
+    background-color: azure;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -10;
+    height: 66px;
+
+    padding: 10px 0;
+    text-align: center;
+    font-family: Vollkorn;
+}
+
+.App-header h1 {
+    font-weight: 600;
+    display:inline-flex;
+    color: #cc6969;
+    position: relative;
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }  
+
+.App-logo {
+    height: 6vmin;
+    pointer-events: none;
+    display:inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }  
+
+/* Read book page */
+.read-book-content {
+    padding: 76px 0 0;
+    display:flex;
+    flex-direction: row
+}
+
+/* Chat panel */
+
+.chat-panel {
+    background-color: #dedede;
+}
+
+/* home page */
+
+.books-home-content {
+    padding: 76px 0 80px;
+    flex: 1 1;
+}
+
+.bookshelf {
+    position: relative;
+    padding: 0 10px 20px;
+}
+
+.bookshelf h2 {
+    padding: 20px 0px 10px;
+}
+
+@media (min-width: 600px) {
+    .bookshelf {
+      padding: 0 20px 40px;
+    }
+  }
+
+.bookshelf-title {
+  margin: 5px;
+  border-bottom: 1px solid #dedede;
+  font-family: Vollkorn;
+}
+
+.bookshelf-books {
+  text-align: center;
+}
+
+/* books grid */
+
+.books-grid {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+}
+
+.books-grid li {
+  padding: 10px 15px;
+  text-align: left;
+}
+
+.book {
+  width: 140px;
+}
+
+.book-title,
+.book-author {
+  font-size: 0.8em;
+}
+
+.book-title {
+  margin-top: 10px;
+}
+
+.book-author {
+  color: #999;
+}
+
+.no-books{
+    margin-top: 10px;
+    color: #999;
+    font-style: italic;
+}
+
+.book-top {
+  position: relative;
+  height: 200px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.book-progress {
+  position: absolute;
+  right: 0;
+  bottom: -10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #60ac5d;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.book-progress h3 {
+  position: relative;
+  bottom: -5px;
+  right: -5px;
+  font-size: 15px;
+}
+
+/* book cover */
+.book-cover {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    background: #eee;
+    cursor: pointer;
+ }
+
+ .book-cover-title {
+padding: 20px 10px 0;
+text-align: center;
+font-size: 0.8em;
+ }
+  
+  .loadersmall {
+    margin-top: 5px;
+    border: 5px solid #f3f3f3;
+    animation: spin 1s linear infinite;
+    border-top: 5px solid #555;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9BcHAuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtFQUNkOztBQUVGO0VBQ0Usa0JBQWtCO0VBQ2xCLHVCQUF1QjtBQUN6Qjs7QUFFQTtJQUNJLGdCQUFnQjtBQUNwQjs7QUFFQSxXQUFXOztBQUVYO0lBQ0ksdUJBQXVCO0lBQ3ZCLFdBQVc7SUFDWCxrQkFBa0I7SUFDbEIsTUFBTTtJQUNOLE9BQU87SUFDUCxZQUFZO0lBQ1osWUFBWTs7SUFFWixlQUFlO0lBQ2Ysa0JBQWtCO0lBQ2xCLHFCQUFxQjtBQUN6Qjs7QUFFQTtJQUNJLGdCQUFnQjtJQUNoQixtQkFBbUI7SUFDbkIsY0FBYztJQUNkLGtCQUFrQjtJQUNsQixtQkFBbUI7SUFDbkIsc0JBQXNCO0lBQ3RCLG1CQUFtQjtJQUNuQix1QkFBdUI7RUFDekI7O0FBRUY7SUFDSSxhQUFhO0lBQ2Isb0JBQW9CO0lBQ3BCLG1CQUFtQjtJQUNuQixzQkFBc0I7SUFDdEIsbUJBQW1CO0lBQ25CLHVCQUF1QjtBQUMzQjs7QUFFQTtJQUNJO01BQ0UsNENBQTRDO0lBQzlDO0VBQ0Y7O0FBRUYsbUJBQW1CO0FBQ25CO0lBQ0ksaUJBQWlCO0lBQ2pCLFlBQVk7SUFDWjtBQUNKOztBQUVBLGVBQWU7O0FBRWY7SUFDSSx5QkFBeUI7QUFDN0I7O0FBRUEsY0FBYzs7QUFFZDtJQUNJLG9CQUFvQjtJQUNwQixTQUFPO0FBQ1g7O0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsb0JBQW9CO0FBQ3hCOztBQUVBO0lBQ0ksc0JBQXNCO0FBQzFCOztBQUVBO0lBQ0k7TUFDRSxvQkFBb0I7SUFDdEI7RUFDRjs7QUFFRjtFQUNFLFdBQVc7RUFDWCxnQ0FBZ0M7RUFDaEMscUJBQXFCO0FBQ3ZCOztBQUVBO0VBQ0Usa0JBQWtCO0FBQ3BCOztBQUVBLGVBQWU7O0FBRWY7RUFDRSxxQkFBcUI7RUFDckIsVUFBVTtFQUNWLFNBQVM7RUFDVCxhQUFhO0VBQ2IscUJBQXFCO0VBQ3JCLGVBQWU7QUFDakI7O0FBRUE7RUFDRSxrQkFBa0I7RUFDbEIsZ0JBQWdCO0FBQ2xCOztBQUVBO0VBQ0UsWUFBWTtBQUNkOztBQUVBOztFQUVFLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLFdBQVc7QUFDYjs7QUFFQTtJQUNJLGdCQUFnQjtJQUNoQixXQUFXO0lBQ1gsa0JBQWtCO0FBQ3RCOztBQUVBO0VBQ0Usa0JBQWtCO0VBQ2xCLGFBQWE7RUFDYixhQUFhO0VBQ2IscUJBQXFCO0FBQ3ZCOztBQUVBO0VBQ0Usa0JBQWtCO0VBQ2xCLFFBQVE7RUFDUixhQUFhO0VBQ2IsV0FBVztFQUNYLFlBQVk7RUFDWixrQkFBa0I7RUFDbEIsbUJBQW1CO0VBQ25CLDRCQUE0QjtFQUM1QiwyQkFBMkI7RUFDM0IscUJBQXFCO0VBQ3JCLGtFQUFrRTtBQUNwRTs7QUFFQTtFQUNFLGtCQUFrQjtFQUNsQixZQUFZO0VBQ1osV0FBVztFQUNYLGVBQWU7QUFDakI7O0FBRUEsZUFBZTtBQUNmO0lBQ0ksa0VBQWtFO0lBQ2xFLGdCQUFnQjtJQUNoQixlQUFlO0NBQ2xCOztDQUVBO0FBQ0Qsb0JBQW9CO0FBQ3BCLGtCQUFrQjtBQUNsQixnQkFBZ0I7Q0FDZjs7RUFFQztJQUNFLGVBQWU7SUFDZix5QkFBeUI7SUFFekIsa0NBQWtDO0lBQ2xDLDBCQUEwQjtJQUMxQixrQkFBa0I7SUFDbEIsV0FBVztJQUNYLFlBQVk7RUFDZDs7RUFPQTtJQUNFLEtBQUssdUJBQXVCLEVBQUU7SUFDOUIsT0FBTyx5QkFBeUIsRUFBRTtFQUNwQzs7QUFFRjtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRTtJQUNFLHVCQUF1QjtFQUN6QjtFQUNBO0lBQ0UseUJBQXlCO0VBQzNCO0FBQ0YiLCJzb3VyY2VzQ29udGVudCI6WyJodG1sLCBib2R5LCAucm9vdCB7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICB9XG4gIFxuYm9keSwgLkFwcCB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgLyogYmFja2dyb3VuZDogd2hpdGU7ICovXG59XG5cbmJvZHkge1xuICAgIGxpbmUtaGVpZ2h0OiAxLjU7XG59XG5cbi8qIEhlYWRlciAqL1xuXG4uQXBwLWhlYWRlciB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogYXp1cmU7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHRvcDogMDtcbiAgICBsZWZ0OiAwO1xuICAgIHotaW5kZXg6IC0xMDtcbiAgICBoZWlnaHQ6IDY2cHg7XG5cbiAgICBwYWRkaW5nOiAxMHB4IDA7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIGZvbnQtZmFtaWx5OiBWb2xsa29ybjtcbn1cblxuLkFwcC1oZWFkZXIgaDEge1xuICAgIGZvbnQtd2VpZ2h0OiA2MDA7XG4gICAgZGlzcGxheTppbmxpbmUtZmxleDtcbiAgICBjb2xvcjogI2NjNjk2OTtcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgLyogZGlzcGxheTogZmxleDsgKi9cbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIH0gIFxuXG4uQXBwLWxvZ28ge1xuICAgIGhlaWdodDogNnZtaW47XG4gICAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG4gICAgZGlzcGxheTppbmxpbmUtZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59XG5cbkBtZWRpYSAocHJlZmVycy1yZWR1Y2VkLW1vdGlvbjogbm8tcHJlZmVyZW5jZSkge1xuICAgIC5BcHAtbG9nbyB7XG4gICAgICBhbmltYXRpb246IEFwcC1sb2dvLXNwaW4gaW5maW5pdGUgMjBzIGxpbmVhcjtcbiAgICB9XG4gIH0gIFxuXG4vKiBSZWFkIGJvb2sgcGFnZSAqL1xuLnJlYWQtYm9vay1jb250ZW50IHtcbiAgICBwYWRkaW5nOiA3NnB4IDAgMDtcbiAgICBkaXNwbGF5OmZsZXg7XG4gICAgZmxleC1kaXJlY3Rpb246IHJvd1xufVxuXG4vKiBDaGF0IHBhbmVsICovXG5cbi5jaGF0LXBhbmVsIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZGVkZWRlO1xufVxuXG4vKiBob21lIHBhZ2UgKi9cblxuLmJvb2tzLWhvbWUtY29udGVudCB7XG4gICAgcGFkZGluZzogNzZweCAwIDgwcHg7XG4gICAgZmxleDogMTtcbn1cblxuLmJvb2tzaGVsZiB7XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgIHBhZGRpbmc6IDAgMTBweCAyMHB4O1xufVxuXG4uYm9va3NoZWxmIGgyIHtcbiAgICBwYWRkaW5nOiAyMHB4IDBweCAxMHB4O1xufVxuXG5AbWVkaWEgKG1pbi13aWR0aDogNjAwcHgpIHtcbiAgICAuYm9va3NoZWxmIHtcbiAgICAgIHBhZGRpbmc6IDAgMjBweCA0MHB4O1xuICAgIH1cbiAgfVxuXG4uYm9va3NoZWxmLXRpdGxlIHtcbiAgbWFyZ2luOiA1cHg7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjZGVkZWRlO1xuICBmb250LWZhbWlseTogVm9sbGtvcm47XG59XG5cbi5ib29rc2hlbGYtYm9va3Mge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbi8qIGJvb2tzIGdyaWQgKi9cblxuLmJvb2tzLWdyaWQge1xuICBsaXN0LXN0eWxlLXR5cGU6IG5vbmU7XG4gIHBhZGRpbmc6IDA7XG4gIG1hcmdpbjogMDtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBsZWZ0O1xuICBmbGV4LXdyYXA6IHdyYXA7XG59XG5cbi5ib29rcy1ncmlkIGxpIHtcbiAgcGFkZGluZzogMTBweCAxNXB4O1xuICB0ZXh0LWFsaWduOiBsZWZ0O1xufVxuXG4uYm9vayB7XG4gIHdpZHRoOiAxNDBweDtcbn1cblxuLmJvb2stdGl0bGUsXG4uYm9vay1hdXRob3Ige1xuICBmb250LXNpemU6IDAuOGVtO1xufVxuXG4uYm9vay10aXRsZSB7XG4gIG1hcmdpbi10b3A6IDEwcHg7XG59XG5cbi5ib29rLWF1dGhvciB7XG4gIGNvbG9yOiAjOTk5O1xufVxuXG4ubm8tYm9va3N7XG4gICAgbWFyZ2luLXRvcDogMTBweDtcbiAgICBjb2xvcjogIzk5OTtcbiAgICBmb250LXN0eWxlOiBpdGFsaWM7XG59XG5cbi5ib29rLXRvcCB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgaGVpZ2h0OiAyMDBweDtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGZsZXgtZW5kO1xufVxuXG4uYm9vay1wcm9ncmVzcyB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgcmlnaHQ6IDA7XG4gIGJvdHRvbTogLTEwcHg7XG4gIHdpZHRoOiA0MHB4O1xuICBoZWlnaHQ6IDQwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgYmFja2dyb3VuZDogIzYwYWM1ZDtcbiAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDtcbiAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xuICBiYWNrZ3JvdW5kLXNpemU6IDIwcHg7XG4gIGJveC1zaGFkb3c6IDAgM3B4IDZweCByZ2JhKDAsMCwwLDAuMTYpLCAwIDNweCA2cHggcmdiYSgwLDAsMCwwLjIzKTtcbn1cblxuLmJvb2stcHJvZ3Jlc3MgaDMge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIGJvdHRvbTogLTVweDtcbiAgcmlnaHQ6IC01cHg7XG4gIGZvbnQtc2l6ZTogMTVweDtcbn1cblxuLyogYm9vayBjb3ZlciAqL1xuLmJvb2stY292ZXIge1xuICAgIGJveC1zaGFkb3c6IDAgM3B4IDZweCByZ2JhKDAsMCwwLDAuMTYpLCAwIDNweCA2cHggcmdiYSgwLDAsMCwwLjIzKTtcbiAgICBiYWNrZ3JvdW5kOiAjZWVlO1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiB9XG5cbiAuYm9vay1jb3Zlci10aXRsZSB7XG5wYWRkaW5nOiAyMHB4IDEwcHggMDtcbnRleHQtYWxpZ246IGNlbnRlcjtcbmZvbnQtc2l6ZTogMC44ZW07XG4gfVxuICBcbiAgLmxvYWRlcnNtYWxsIHtcbiAgICBtYXJnaW4tdG9wOiA1cHg7XG4gICAgYm9yZGVyOiA1cHggc29saWQgI2YzZjNmMztcbiAgICAtd2Via2l0LWFuaW1hdGlvbjogc3BpbiAxcyBsaW5lYXIgaW5maW5pdGU7XG4gICAgYW5pbWF0aW9uOiBzcGluIDFzIGxpbmVhciBpbmZpbml0ZTtcbiAgICBib3JkZXItdG9wOiA1cHggc29saWQgIzU1NTtcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XG4gICAgd2lkdGg6IDUwcHg7XG4gICAgaGVpZ2h0OiA1MHB4O1xuICB9XG4gIFxuICBALXdlYmtpdC1rZXlmcmFtZXMgc3BpbiB7XG4gICAgMCUgeyAtd2Via2l0LXRyYW5zZm9ybTogcm90YXRlKDBkZWcpOyB9XG4gICAgMTAwJSB7IC13ZWJraXQtdHJhbnNmb3JtOiByb3RhdGUoMzYwZGVnKTsgfVxuICB9XG4gIFxuICBAa2V5ZnJhbWVzIHNwaW4ge1xuICAgIDAlIHsgdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7IH1cbiAgICAxMDAlIHsgdHJhbnNmb3JtOiByb3RhdGUoMzYwZGVnKTsgfVxuICB9XG5cbi5BcHAtbGluayB7XG4gIGNvbG9yOiAjNjFkYWZiO1xufVxuXG5Aa2V5ZnJhbWVzIEFwcC1sb2dvLXNwaW4ge1xuICBmcm9tIHtcbiAgICB0cmFuc2Zvcm06IHJvdGF0ZSgwZGVnKTtcbiAgfVxuICB0byB7XG4gICAgdHJhbnNmb3JtOiByb3RhdGUoMzYwZGVnKTtcbiAgfVxufVxuIl0sInNvdXJjZVJvb3QiOiIifQ== */</style></head>
+  <body style="margin-bottom: 0px !important; margin-top: 24px !important;">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"><div class="container"><div class="read-book"><div class="col-10 App-header"><img src="React%20App_files/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg" class="App-logo" alt="logo"><h1 role="button">Philaude</h1></div><div class="read-book-content"><h3> you are reading book 1, title: Meep </h3><div class="chat-panel"><h1>FullStack Chat AI Tutorial</h1><section></section><div class="hide"><p><i></i></p></div><form action=""><input type="text" name="message" placeholder="Type a message here and hit Enter..."></form></div></div></div></div></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  
+
+<span class="cleanslate TridactylStatusIndicator TridactylModenormal">normal</span><link rel="stylesheet" type="text/css" href="React%20App_files/s3downbar.css"><link rel="stylesheet" type="text/css" href="React%20App_files/contextmenu.css"><link rel="stylesheet" type="text/css" href="React%20App_files/tooltip.css"><div id="s3downbar-ibmbeeacmbeeaebmfjpmnlgkhoejinha" style="box-sizing: initial !important; position: fixed; white-space: nowrap; width: 100% !important; left: 0px; top: 0px; border-bottom: 1px solid rgb(153, 153, 153); transform-origin: left top 0px; z-index: 2147483647; margin: 0px; padding: 2px 0px; background-color: rgb(28, 26, 33) !important; color: rgb(34, 34, 34); display: flex !important; transform: scale(1) !important;"><style type="text/css" media="print">#s3downbar-ibmbeeacmbeeaebmfjpmnlgkhoejinha { display: none !important; }</style><div style="box-sizing: initial !important; position: absolute !important;" id="s3downbar_resize_pane" is_top="true"><div style="box-sizing: initial !important;" class="tooltip_box" is_top="true"></div><div style="box-sizing: initial !important;" class="tooltip_arrow" is_top="true"></div></div><div style="box-sizing: initial !important; color: rgb(34, 34, 34) !important; position: relative !important; order: 4 !important;" class="s3dmBox" id="s3downbar_hide_button" is_hidden="true"><div id="s3downbar_hide_button_img" style="box-sizing: initial !important; background-image: url(&quot;moz-extension://f71895c1-a931-4fcd-9379-ba49c3c4f019/skin/s3dm_icons.png&quot;) !important; display: inline-block !important;"></div><div style="box-sizing: initial !important; font-size: 9pt !important;" class="tooltip_box" is_top="true"><div style="box-sizing: initial !important;" class="tooltipText">Hide Download Bar</div><div style="box-sizing: initial !important;" class="tooltipText">Ctrl + Shift + Z = Show/Hide Download Bar</div></div><div style="box-sizing: initial !important;" class="tooltip_arrow" is_top="true"></div></div><div style="box-sizing: initial !important; color: rgb(34, 34, 34) !important; position: relative !important; background-color: rgb(28, 26, 33) !important; font-size: 9pt !important;" class="s3dmBox" id="s3downbar_main_menu_button" is_hidden="true"><img style="box-sizing: initial !important;" src="React%20App_files/logo16.png"><span style="box-sizing: initial !important;">Downloads</span><div style="box-sizing: initial !important; font-size: 9pt !important;" class="tooltip_box" is_top="true"><div style="box-sizing: initial !important;" class="tooltipText">Download Manager (S3)</div></div><div style="box-sizing: initial !important;" class="tooltip_arrow" is_top="true"></div></div><div style="box-sizing: initial !important; color: rgb(34, 34, 34) !important; position: relative !important; order: 2 !important; background-color: rgb(28, 26, 33) !important; font-size: 9pt !important;" class="s3dmBox" id="s3downbar_clear_button" is_hidden="true">Clear<div style="box-sizing: initial !important; font-size: 9pt !important;" class="tooltip_box" is_top="true"><div style="box-sizing: initial !important;" class="tooltipText">Left Click: Clear All Finished</div><div style="box-sizing: initial !important;" class="tooltipText">Right Click: Undo last clear</div></div><div style="box-sizing: initial !important;" class="tooltip_arrow" is_top="true"></div></div><div style="box-sizing: initial !important; color: rgb(34, 34, 34) !important; position: relative !important; order: 1 !important; font-size: 9pt !important;" class="s3dmBox" id="s3downbar_holder_summary_progress" is_hidden="false"><div style="box-sizing: initial !important;">0%</div><div style="box-sizing: initial !important; font-size: 9pt !important;" class="tooltip_box" is_top="true"><div style="box-sizing: initial !important;" class="tooltipText">Download History</div></div><div style="box-sizing: initial !important;" class="tooltip_arrow" is_top="true"></div></div><div style="box-sizing: initial !important;" id="s3downbar_download_data_listbox"><div style="box-sizing: initial !important; max-height: 21px !important;" id="s3downbar_download_data_listbox_scroll" list_count="1"><div style="box-sizing: initial !important;" id="s3downbar_download_data_list_empty">Download list is empty</div><div id="s3db_C20AD4D76FE97759AA27A0C99BFF6710" class="download_data_box db_progressStack" style="max-width: 170px !important; flex-basis: 75px !important; height: 18px !important; border: 1px solid threedshadow !important;" click_handle="progress_click_handle">
+		<div class="download_data_box_iframe_box"><div id="s3downbar_download_box_iframe" is_hidden="true" class="download_data_box_iframe"></div></div>
+		<div id="s3downbar_download_box_progressremainder" class="download_data_box_progressremainder" style="background-color: rgb(255, 255, 255) !important;" is_hidden="false"></div>
+		<div id="s3downbar_download_box_progress" class="download_data_box_progress" style="background-color: rgb(123, 188, 215) !important;" is_hidden="false"></div>
+		<div id="s3downbar_download_box_data" class="download_data_box_data">
+			<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" id="s3downbar_download_box_img" class="download_data_box_img" style="background: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACaklEQVQ4T4WTX0hTcRTHv9e7rVwhCGZbBpnNuT+Qg3pI9xCFUFZE9E+KJGyIUwvyMYrAjF56alb+IQoikMoeiomBQRR7KEQoY9vdFkyICtvdTPHavHP3dn7VxmzLfnC4555zz+ee7z3ncvhzfD7fYYPBsEtVVS4TIz8tiuL7+vr6BxSTM/Hca+ZhPhKJ3DCZTJ05xVAUBQRQp6enh2pra12US/4NyQA0giB4ampq2nMB1AFSqRRisRg0Go3XaDQep/yPQh1kAayI435zmc+6SCQSKC0tRTwef0EyD1FKykCyHQQCgV6LxeJ+OfYW1y72IvF9hiFgqOAxP7+IJXk1XJ0nsH2HfczhcBzMyFkGsFqt7t3bTiIuTtHbOcwszuLN8xJEw8U40irDaqrAk7FbCIVCZ5xO5z3WRR7AUbUXI00hKGU8+u9fxtGGFOztjzExKaPjkg7jk15Eo1GP2WzuonolD+By7MGdhk9Yqkthaq4Zvtst2HelC+UbJbT18Bh4+AzhcKSP5J4jQDoP0GLZj7uVEiY2bEaP1I1qYRYdp65ik3kO7YNaDHqfIigI/TabjQGW8gBbqxoxrNVgyzoZr3kbdHwKddUTiK9aj8aRJMY/joJG/m/ATscxFH0W4aGCyjU6aPk0vkk6nJa/IF1eglfvHhUG+P3+mzSFtuGhUVzv7sPCQhI2RQ9OLcIHfh4la4tx/kIrmpoPIBgMDtjt9rPLJDAA6Wpjo5EkCWnaQP7XQnFIqwp4rRZ6PQEpRjuzMqDQT5MbKwTgKcgkuP9XzPIkgX1EJiE7xiK6MZKVkTF/paNQUiT7yhbpJ52nIiCKfeIcAAAAAElFTkSuQmCC&quot;) 50% 50% / contain no-repeat !important;" no_image="false" is_hidden="true">
+			<img src="" id="s3downbar_download_box_img_queue" class="download_data_box_img" is_hidden="true">
+			<img src="" id="s3downbar_download_box_picToShrink" pictoshrink="true" is_hidden="true" class="download_data_box_img">
+			<div id="s3downbar_download_box_filename" class="download_data_box_filename" style="color: rgb(34, 33, 34) !important; font-size: 9pt !important;">React App.html</div>
+			<div id="s3downbar_download_box_progress_data" class="download_data_box_progress_data" is_hidden="false">
+				<div id="s3downbar_download_box_progress_percent" class="download_data_box_progress_percent" style="font-size: 5pt !important;" is_hidden="true">Unk.</div>
+				<div id="s3downbar_download_box_progress_remaintime" class="download_data_box_progress_remaintime" style="font-size: 5pt !important;" is_hidden="false">Unk.</div>
+				<div id="s3downbar_download_box_progress_bytesReceived" class="download_data_box_progress_bytesReceived" style="font-size: 5pt !important;" is_hidden="true">-.--</div>
+				<div id="s3downbar_download_box_progress_speed" class="download_data_box_progress_speed" style="font-size: 5pt !important;" is_hidden="false">-.--</div>
+			</div>
+		</div>
+	<div style="box-sizing: initial !important; position: fixed !important; z-index: 50 !important;"><div style="box-sizing: initial !important; font-size: 9pt !important;" class="tooltip_box" is_top="true"><div id="download_data_tooltip" class="download_data_tooltip">
+		<div class="download_data_tooltip_head">
+			<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAFb0lEQVRYR+2WfWwTZRzHv3ftres6xhhzApYNHAIKhJctVKBkIWy6dmUb2xxEQQj+IRZMTJRECP6hEBMTIygwNb5EjBlhZhmMTV1GRnh1ONnGsBIR3FY21LGk0q4v1157/p4bRSiFrdQ/eZqn195zd7/P8/29HYeIcezYsfSZM2dWSpLER66x/8FgEKFQiB1lGh673X4uPz/fxpaiXT/SOS7ygpaWFsOyZctao91IBpXT7MgmQcLn84UGBgZO2my29StXruwZyWDk+l0Ahw8fXlJcXHzqXgBh4zdVgN/vZxBwOBy93d3dz5pMpt9igYgZIKxAGICpIIoiXC4XtFptf2trq7mkpKRrtBAxAdwuP1OCQQQCAUUFj8eDpKQkFhsDHR0dJQUFBVHdGJcLwgCRKjAFvF4vdDod1Go1g3F0dnZWLF++vGUkJWJW4HYVwlnBFAgDaDQaRRX67+rq6lqdl5f33f0gHhggSjaEDStBydJVEARPb2/vGlKi7l4QowZgu7ryux3OG0OQyffhwRKTZWcoKEGiqUlMwCR9Bp0LKbFB09fX17eusLCwJhrEqAAu2i5j84a3cPlSD+0sBE65i32xegCUlWlw6mQAA9eD4HkOU7In4/2925A9PUupFRQj7vb2diPVic6YgzDgD6Bw6Yu0+16ySUbJ4DDA8M5NKwRU7dDih2Y/rG96SZ3hhazH9ag/+jk4AmLuoDpRm52d/ZxCfdsYUQG2+8Ila+lBPJ7M9OPvf9Rw+3iIAQKhYn2iMQH6CSrlkbs+DWD3xwGwGs5StPH4V5hGKrDfpITDarVmV1dXO2ICOHu6AxWmjchKAxq2XMWu7yfhmRwtKnYFkDM1A9W7ZSRPcYITEogohD2fSag9IuGPyxIONlQh1zBHKds8z8vNzc0LioqK7nDDiAr8ePIcys2b8LXFifxZTiA9iCGtgPqD72C806Kkn3piG4zb92PspCHccMloPw+s3ejGt41VMCyeFwZAU1PTIrPZfEeBGhHgDAFsLLXiXIUbwmMeIJOcTJuVuARcumjFxdNrIOi6YNzyEdLSHJBJiRBUyDXfwL4v9+Jp43xFcY4Cp76+fklpaemZmFzAFHhv9SYcypNo915gPlW9iTrY+stxrd+IP9sMCF7rRY7pCxhWnAX8yUAGh4qXXXh9x4cEsOCWvbq6OmN5efnpmAHeLXsVR3LVgE4Exg9hn7wVv/jzoaHdjhsMQOixY96sOpieP4qQOwMqvYRVW914beduLDLm3LJHChipUcUGwFzwkmUz2qalIDnVD2hF1KUYcMC7CgKV3dTrInRXPdhQXIUnpgyCz5AQCqTDsG0Ae77Zg0VL4wRoPdWOsqJXsDc5FSUTNeATRIS0fhySF+KENBuJlOPmlDbkzfgJGCsgpEvEz1fGo/SAHbUUhHEDhNNwujoRnySPQ+Y4DVQqEbxapNQL0KQ3MZ5qi4aDnMrDJ+qx6nw/OgZdqKE0jBvg1wuXYFq6DlBxyIcObwhj8ciYRCSRQRVPRYeXqCAFERTV8Dky8DbXh1rvdaVfNB7fjzlzZ8QXA6LoR8HiF3C15xqll4wZshZWOR1zOR20KjXYJ+gXcCHoxwfqbthUTqqEHPSTJ+BoazU1J018AOzuznYbrOu3o8/+l1JUggSSLidgqpyoNKVuzodBTqTs55R812c+SjVgJ+bnzr6j9zxQFoSf4PV4YSN3uJxuBYIZJq8PN6WbnZEZH5Oiw1NzptPrmTay8bFCFHsa3vWUOE48BHiowKgUqKmpWWixWBoo0u9q1XHEH0tPuaGhwVJZWUk1+78RzQjLn3SaQjwGo9xLL3EYpEk9/f4AbJWB/a8KKOUi4oWUGfoX6esyTqj/Eq4AAAAASUVORK5CYII=" id="s3downbar_download_tooltip_img" class="download_data_tooltip_img" no_image="false">
+			<div id="s3downbar_download_tooltip_filename" class="download_data_tooltip_filename">React App.html </div>
+		</div>
+		<div class="download_data_tooltip_data_box" id="s3downbar_download_tooltip_data_box" is_hidden_progress="false" is_hidden_finish="true">
+			<table class="download_data_tooltip_data">
+				<tbody><tr id="s3downbar_download_tooltip_source_box" is_hidden="true"><td><div>Source:</div></td><td><input type="text" id="s3downbar_download_tooltip_source" class="download_data_tooltip_url" readonly="true"></td></tr>
+				<tr><td><div>From:</div></td><td><input type="text" id="s3downbar_download_tooltip_from" class="download_data_tooltip_url" readonly="true" title="http://localhost:3000/book/1" value="http://localhost:3000/book/1"></td></tr>
+				<tr><td><div>To:</div></td><td><div id="s3downbar_download_tooltip_to">/Users/struppi/yesidothecoding/philosophiclaude/client/src/components/img/React App.html</div></td></tr>
+				<tr class="download_progress"><td><div>Status:</div></td><td><div id="s3downbar_download_tooltip_status">-.-- / Unknown ( -.-- )</div></td></tr>
+				<tr class="download_finish"><td><div>File Size:</div></td><td><div id="s3downbar_download_tooltip_size" filenotfound="true">File not found</div></td></tr>
+				<tr class="download_finish" id="s3downbar_download_virus_scan_box" is_hidden="true"><td><div id="s3downbar_download_virus_scan_label">Virus scan:</div></td><td><a id="s3downbar_download_virus_scan" target="_blank"></a></td></tr>
+				<tr><td><div>Time Start:</div></td><td><div id="s3downbar_download_tooltip_timeStart">20:45:27 - 2023.06.03</div></td></tr>
+				<tr class="download_finish"><td><div>Time to Complete:</div></td><td><div id="s3downbar_download_tooltip_timeEnd">Unknown</div></td></tr>
+				<tr class="download_progress"><td><div>Time Left:</div></td><td><div id="s3downbar_download_tooltip_timeLeft">Unknown</div></td></tr>
+				<tr class="download_progress"><td><div>Percent Done:</div></td><td><div id="s3downbar_download_tooltip_percent">Unknown</div></td></tr>
+				<tr class="download_finish"><td><div>Average Speed:</div></td><td><div id="s3downbar_download_tooltip_speed">Unknown</div></td></tr>
+			</tbody></table>
+			<div class="download_data_tooltip_img_preview_box download_finish"><div class="download_data_tooltip_img_box">
+				<img src="" id="s3downbar_download_tooltip_img_preview" is_hidden="true" class="download_data_tooltip_img_preview download_finish" width="120" height="120">
+				<div id="s3downbar_download_tooltip_img_size" class="download_data_tooltip_img_size"></div>
+			</div></div>
+		</div>
+		<div class="download_data_tooltip_hint" id="s3downbar_download_tooltip_hint_progress" is_hidden="true">
+			<div>mouse double click: download pause/resume</div>
+			<div>mouse middle click: download cancel</div>
+		</div>
+		<div class="download_data_tooltip_hint" id="s3downbar_download_tooltip_hint_finish" is_hidden="true">
+			<div>mouse double click: open file</div>
+			<div>mouse double click + Ctrl: open dir</div>
+			<div style="padding-top: 4px !important;">mouse middle click: delete from list</div>
+			<div>mouse middle click + Ctrl: delete from system</div>
+			<div style="padding-top: 4px !important;">press mouse button + Ctrl: drag &amp; drop</div>
+		</div>
+	</div></div><div style="box-sizing: initial !important;" class="tooltip_arrow" is_top="true"></div></div></div></div></div></div></body><iframe class="cleanslate hidden" src="React%20App_files/commandline.html" id="cmdline_iframe" loading="lazy" style="height: 0px !important;"></iframe></html>
