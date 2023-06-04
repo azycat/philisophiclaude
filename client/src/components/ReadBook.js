@@ -15,7 +15,7 @@ function ReadBook(props) {
     return (
         <div className="read-book">
             <Header />
-            <h3 style={{padding: '5px 0 0'}}> you are reading book {id}, title: {book.title} </h3>
+            <h3> you are reading book {id}, title: {book.title} </h3>
             <div className="read-book-content">
                     <Reader/>
                     <Chat/>

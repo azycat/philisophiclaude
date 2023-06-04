@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Vollkorn');
+
 html, body, .root {
     height: 100%;
   }
@@ -22,15 +24,11 @@ body {
     height: 66px;
 
     padding: 10px 0;
-    text-align: center;
     font-family: Vollkorn;
 }
 
-.App-header-title {
-    cursor: pointer;
-}
-
 .App-header h1 {
+    cursor: pointer;
     font-weight: 600;
     display:inline-flex;
     color: #cc6969;
@@ -57,6 +55,10 @@ body {
   }  
 
 /* Read book page */
+.read-book h3 {
+    padding: 5px 0 0;
+    font-family: Vollkorn;
+}
 .read-book-content {
     width: 100%;
     padding: 5px 0 0;
@@ -72,6 +74,7 @@ body {
 .chat-panel {
     height:100vh;
     background-color: #dedede;
+    border: 1px solid black;
     flex-grow: 1
 }
 
@@ -80,13 +83,14 @@ body {
     /* height:500vh; */
     min-height: 90vh;
     width:500px;
+    
     flex-grow: 1
 }
 
 /* home page */
 
 .books-home-content {
-    padding: 76px 0 80px;
+    padding: 0 0 80px;
     flex: 1;
 }
 

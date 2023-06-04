@@ -63,6 +63,26 @@ const Reader = () => {
         url="https://philclaude.s3.us-west-2.amazonaws.com/Euthopro.epub"
         getRendition={rendition => {
           renditionRef.current = rendition
+          rendition.themes.register('custom', {
+            // "*": {
+            //     color: "#FFFFFF",
+            //     backgroundColor: "#252525",
+            //   },
+  
+              img: {
+                border: '1px solid red'
+              },
+              p: {
+                'line-height': '1.35',
+                'margin' : '15px 0',
+                'font-family': 'Vollkorn, sans-serif',
+                'font-weight': '300',
+                'font-size': '20px',
+                // border: '1px solid green'
+              }
+          })
+
+          rendition.themes.select('custom')
           // renditionRef.current.themes.fontSize(`${size}%`)
         }}
       />
