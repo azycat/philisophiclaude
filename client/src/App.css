@@ -1,3 +1,7 @@
+html, body, .root {
+    height: 100%;
+  }
+  
 body, .App {
   text-align: center;
   /* background: white; */
@@ -7,32 +11,40 @@ body {
     line-height: 1.5;
 }
 
-/* home page */
+/* Header */
 
 .App-header {
-  padding: 10px 0;
-  /* background: #2e7c31; */
-  text-align: center;
-  font-family: Vollkorn;
+    background-color: azure;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -10;
+    height: 66px;
+
+    padding: 10px 0;
+    text-align: center;
+    font-family: Vollkorn;
 }
 
 .App-header h1 {
     font-weight: 600;
-    margin: 0;
-    min-height: 50pt;
     display:inline-flex;
     color: #cc6969;
     position: relative;
     /* display: flex; */
     flex-direction: column;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
   }  
 
 .App-logo {
-  height: 10vmin;
-  pointer-events: none;
-  display:inline-flex;
+    height: 6vmin;
+    pointer-events: none;
+    display:inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -41,12 +53,21 @@ body {
     }
   }  
 
+/* Read book page */
+.read-book-content {
+    padding: 76px 0 80px;
+    flex: 1;
+}
+
+/* home page */
+
 .books-home-content {
-    padding: 0 0 80px;
+    padding: 76px 0 80px;
     flex: 1;
 }
 
 .bookshelf {
+    position: relative;
     padding: 0 10px 20px;
 }
 
@@ -103,6 +124,12 @@ body {
   color: #999;
 }
 
+.no-books{
+    margin-top: 10px;
+    color: #999;
+    font-style: italic;
+}
+
 .book-top {
   position: relative;
   height: 200px;
@@ -135,12 +162,14 @@ body {
 .book-cover {
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     background: #eee;
-  }
-  .book-cover-title {
-    padding: 20px 10px 0;
-    text-align: center;
-    font-size: 0.8em;
-  }
+    cursor: pointer;
+ }
+
+ .book-cover-title {
+padding: 20px 10px 0;
+text-align: center;
+font-size: 0.8em;
+ }
   
   .loadersmall {
     margin-top: 5px;

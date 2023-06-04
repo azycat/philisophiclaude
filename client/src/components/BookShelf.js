@@ -2,10 +2,10 @@ import React,{Component} from 'react';
 import Book from './Book';
 
 class BookShelf extends Component {
-    constructor(props) {
-        super(props);
-        // this.props.books; call this to ask for books from props
-    }
+    // constructor(props) {
+    //     super(props);
+    //     // this.props.books; call this to ask for books from props
+    // }
 
     render() {
         const {shelf, books } = this.props;
@@ -16,9 +16,10 @@ class BookShelf extends Component {
                 <h2 className="bookshelf-title">{shelf.name}</h2>
                 <div className="bookshelf-books">
                     <ol className="books-grid">
-                        {bookList.map(book => (
-                            <Book key={book.id} book={book} shelf={shelf.key} />
-                        ))}
+                        {(bookList.length > 0) ? bookList.map(book => (
+                                <Book key={book.id} book={book} shelf={shelf.key} />
+                            ))
+                        : <p className="no-books">No books on this shelf.</p>}
                     </ol>
                 </div>
             </div> 
