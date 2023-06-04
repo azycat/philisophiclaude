@@ -4,11 +4,11 @@ axios.defaults.headers.common = {
   "Content-Type": "application/json"
 }
 
-const baseUrl = 'api/book' 
+const baseUrl = 'api/user' 
 
-const getAllBooks = (body) => {
-  const request = axios.get(`${baseUrl}/all`)
+const getUserData = (username) => {
+  const request = axios.get(`${baseUrl}`);
   return request.then(response => response.data)
 }
 
-export default { getAllBooks }
+export default { getUserData }

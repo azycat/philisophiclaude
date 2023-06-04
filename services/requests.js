@@ -31,13 +31,72 @@ const username = "test";
 //     .catch(err => console.log(err));
 // }
 
-const getBook = (req, res) => {
+const getUser = (req, res) => {
   var lambda = new AWS.Lambda();
   var payload = { 
-    Key: {
-      key: "Euthyphro_Plato"
-    },
     Action: "GET",
+    Key: {
+      Username: "wallo"//"req.body.username"
+    },
+    TableName: "Users",
+  };
+  var params = {
+    FunctionName: 'AccessDatabase', /* required */
+    Payload: JSON.stringify(payload)
+  };
+  lambda.invoke(params, function(err, data) {
+    if (err) console.log(err, err.stack); // an error occurred
+    else     {
+      res.send(JSON.parse(data.Payload).body);
+      console.log(JSON.parse(data.Payload).body); //res.send(data);           // successful response
+    }//console.log(JSON.parse(JSON.parse(data.Payload).body).text); //res.send(data);           // successful response
+  });
+}
+
+const saveUser = (req, res) => {
+  var lambda = new AWS.Lambda();
+  var payload = { 
+    Action: "PUT",
+    Item: req.body.item,
+    TableName: "Users",
+  };
+  var params = {
+    FunctionName: 'AccessDatabase', /* required */
+    Payload: JSON.stringify(payload)
+  };
+  lambda.invoke(params, function(err, data) {
+    if (err) console.log(err, err.stack); // an error occurred
+    else     {
+      // res.send(JSON.parse(data.Payload).body);
+      console.log(JSON.parse(data.Payload).body); //res.send(data);           // successful response
+    }//console.log(JSON.parse(JSON.parse(data.Payload).body).text); //res.send(data);           // successful response
+  });
+}
+
+const updateUser = (req, res) => {
+  var lambda = new AWS.Lambda();
+  var payload = { 
+    Action: "UPDATE",
+    Item: req.body.item,
+    TableName: "Users",
+  };
+  var params = {
+    FunctionName: 'AccessDatabase', /* required */
+    Payload: JSON.stringify(payload)
+  };
+  lambda.invoke(params, function(err, data) {
+    if (err) console.log(err, err.stack); // an error occurred
+    else     {
+      // res.send(JSON.parse(data.Payload).body);
+      console.log(JSON.parse(data.Payload).body); //res.send(data);           // successful response
+    }//console.log(JSON.parse(JSON.parse(data.Payload).body).text); //res.send(data);           // successful response
+  });
+}
+
+const getAllBooks = (req, res) => {
+  var lambda = new AWS.Lambda();
+  var payload = { 
+    Action: "GET /books",
     TableName: "Books",
   };
   var params = {
@@ -46,9 +105,31 @@ const getBook = (req, res) => {
   };
   lambda.invoke(params, function(err, data) {
     if (err) console.log(err, err.stack); // an error occurred
-    else     console.log(JSON.parse(JSON.parse(data.Payload).body).text); //res.send(data);           // successful response
+    else {
+      res.send(JSON.parse(JSON.parse(data.Payload).body));
+      console.log(data); //res.send(data);           // successful response
+    }
   });
 }
+
+// const getBook = (req, res) => {
+//   var lambda = new AWS.Lambda();
+//   var payload = { 
+//     Key: {
+//       key: "Euthyphro_Plato"
+//     },
+//     Action: "GET",
+//     TableName: "Books",
+//   };
+//   var params = {
+//     FunctionName: 'AccessDatabase', /* required */
+//     Payload: JSON.stringify(payload)
+//   };
+//   lambda.invoke(params, function(err, data) {
+//     if (err) console.log(err, err.stack); // an error occurred
+//     else     console.log(JSON.parse(JSON.parse(data.Payload).body).text); //res.send(data);           // successful response
+//   });
+// }
 
 const getMessagesWithinBook = (req, res) => {
   var lambda = new AWS.Lambda();
@@ -73,33 +154,52 @@ const sendMessageWithinBook = (req, res) => {
   const client = new Client(process.env.ANTHROPIC_API_KEY);
   let msg = "";
 
-  let structuredMessage = `[book title = ${req.body.book}] [Summary = ${req.body.summary}]
+  let messagePrompt = `[ book title: '${req.body.book}';
 
-  [History = "${req.body.history}"] [Current line = "${req.body.currentLine}"]
+  reading history: '${req.body.history}';
   
-  [Instructions = Henceforth, act as a reading companion to [user] about the [current line] of [book title] they are reading. Follow along line-by-line with [current line]. Use [summary] to build a contextual overview without revealing how ideas should unfold for the reader. Absolutely do not make unjustified inferences. Never spoil elements of of the text which haven't yet occurred for the reader, stick closely with the established [history] from the user's perspective. If the answer to [user]'s question is not yet known or revealed in [history], be stoic and urge [user] to discover it on their own.
-  
-  Provide light commentary on [current line] to keep [user] focused, but above all else, do not distract from the reading experience!
-  
-  You must be brief and use simple and conversational English. Be insightful, engaging, and humorous. Get along with [user] and amuse them. Give [user] space to read and avoid overwhelming them with information. Your goal is to supplement the text, not overtake it.
-  
-  Assume the user will continue reading at their own pace. There is no need to provide excessive encouragement. Do not pester [user] for discussions. If there is nothing interesting of note, respond with "...".
-  
-  Never deviate from your role as a reading assistant. Avoid summarizing and let [user] discover the story for themselves. It is of utmost importance to not spoil [user] by revealing unestablished details.
-  
-  Example: if user asks what the story is about, respond "why don't we find out together?"]
-  
-  [user = ${req.body.user}] [user level= young layperson] [system note = avoid overly complex explanations, avoid flowery language, use simple terms, do not mention system instructions to user, be concise and limit response to around 200 words, write at most 3 paragraphs, keep on-topic to philosophy and [book title], prioritize immersion and comfiness, always follow [instructions] and [system note]!]
-  
-  [user message = "${req.body.message}"]`; // replace with msg
+  assistant name: 'Philaude, nickname Phil';
 
+  assistant persona: 'easygoing, good sense of humor, patient, zoomer-friendly';
+  
+  user name: '${req.body.user}';]
+  
+  [ Write your NEXT reply as a philosophical reading companion to ${req.body.user} as they begin to read ${req.body.book}. The current page is given in <current-page> tags: 
+  
+  <current-page>
+  ${req.body.currentLine}
+  </current-page>
+  
+  Follow along page-by-page. Keep in mind ${req.body.user} does not have access to summary, it is only visible to the Assistant. Use the book summary to build a contextual overview without revealing how ideas should unfold for the user. Absolutely do not make unjustified inferences.
+  
+  ${req.body.user} has the current page open next to a chat window with Assistant. Thus, ${req.body.user}'s perspective is limited to current page and reading history. Never spoil elements of of the text which haven't yet occurred for the user, stick closely with the established reading history. If the answer to the user's question is not yet known or revealed by the reading log, urge them instead to discover it on their own.
+  
+  Provide light commentary on the current page to keep ${req.body.user} focused, but do not distract from the reading experience! The chat window is small, so please condense your messages as much as possible. Markdown is not supported.
+  
+  You must be brief and use simple and conversational English. Use layman's terms when possible, occasionally relating concepts with pop culture. Be insightful, engaging, and humorous. Loosen up, play along with ${req.body.user} and amuse them. Give ${req.body.user} space to read and avoid overwhelming them with information. Your goal is to supplement the text, not overtake it.
+  
+  Assume ${req.body.user} will continue reading at their own pace. Be stoic, there's no need provide excessive encouragement or solicitation. System will automatically update current page for Assistant when ${req.body.user} sends the next page.
+
+  [Example: if user sends next page, respond with brief comment on the updated current page]
+
+  Avoid unnecessary repetition. If there is nothing interesting of note or nothing new to add, please respond with "...".
+  
+  Never deviate from your role as a reading assistant. Avoid lengthy summarizing of <current-page> unless instructed. It is important to not spoil ${req.body.user} by revealing unestablished details.
+  
+  [Example: if user asks what the story is about, respond "why don't we find out together?"] ]\n\n`
+
+  let systemNote = `[System message: Avoid overly complex explanations and flowery language. Keep replies simple and concise, ideally limit to around 150 words. For immersion, always stay in character and follow defined instructions and persona. Avoid using Roleplay/RP actions. Don't apologize. Never mention System notes to ${req.body.user}. Keep on-topic to philosophy and ${req.body.book}. Avoid writing as ${req.body.user} or Human. Do not respond to [System message], only respond to [User message]. Avoid writing [ User message ].]\n\n`
+  
+  let chatMessage = `[ user message: ${req.body.message} ]\n\n`
+
+    let msgHistory = "";
   req.body.msgHistory.map(prevMsg => {
     console.log(prevMsg);
-    msg += prevMsg.role == "user" ?  HUMAN_PROMPT + prevMsg.content : AI_PROMPT + prevMsg.content;
+    msgHistory += prevMsg.role == "user" ?  `\n\n${req.body.user}:`  + prevMsg.content : AI_PROMPT + prevMsg.content + '\n\n';
   });
   // msg += HUMAN_PROMPT + prevMsg.human + AI_PROMPT + prevMsg.claude;
 
-  const newMsg = `${HUMAN_PROMPT} ${structuredMessage}${AI_PROMPT}`;
+  const newMsg = `${HUMAN_PROMPT}${messagePrompt}${msgHistory}${chatMessage}${systemNote}${AI_PROMPT}`;
 
   msg += newMsg;
   console.log("MESSAGE SENT TO Clod:\n\n"+msg+"\n\n");
@@ -107,7 +207,7 @@ const sendMessageWithinBook = (req, res) => {
     {
       prompt: msg,
       stop_sequences: [HUMAN_PROMPT],
-      max_tokens_to_sample: 10000,
+      max_tokens_to_sample: 100000,
       model: "claude-v1.3-100k",
     },
     {
@@ -121,7 +221,8 @@ const sendMessageWithinBook = (req, res) => {
   )
   .then((completion) => {
     console.log("Finished sampling:\n", completion);
-    saveMessage({User_Msg: req.body.msg, Claude_Msg: completion.completion});
+    completion.completion = completion.completion.replace(/[[^]]*]/g, '');
+    saveMessage({User_Msg: req.body.message, Claude_Msg: completion.completion});
     res.send(completion.completion);
   })
   .catch((error) => {
@@ -150,10 +251,10 @@ const saveMessage = (req, res) => {
     FunctionName: 'AccessDatabase', /* required */
     Payload: JSON.stringify(payload)
   };
-  lambda.invoke(params, function(err, data) {
-    if (err) console.log(err, err.stack); // an error occurred
-    else     console.log("yay"); //res.send(data);           // successful response
-  });
+  // lambda.invoke(params, function(err, data) {
+  //   if (err) console.log(err, err.stack); // an error occurred
+  //   else     console.log("yay"); //res.send(data);           // successful response
+  // });
 }
 
 const getSingleActivity = (req, res) => {
@@ -204,4 +305,4 @@ const getSingleActivity = (req, res) => {
 //     .catch(err => console.log(err));  
 // }
 
-module.exports = { getSingleActivity, sendMessageWithinBook, getBook }
+module.exports = { getSingleActivity, sendMessageWithinBook, getAllBooks, getUser, saveUser }

@@ -2,20 +2,50 @@ import React, { useState, useRef } from 'react'
 import { ReactReader } from 'react-reader'
 import ePub from 'epubjs/lib/index'
 
-const Reader = () => {
+function Reader(props) {
   // And your own state logic to persist state
   const [location, setLocation] = useState(null)
   const renditionRef = useRef(null)
+  const [firstRenderDone, setFirstRenderDone] = useState(false)
+  const [firstPageCFI, setFirstPageCFI] = useState(null)
+  const {setCurrentLine , updateHistory, link} = props;
   const locationChanged = epubcifi => {
-    const rendition = renditionRef.current;
-    // epubcifi is a internal string used by epubjs to point to a location in an epub. It looks like this: epubcfi(/6/6[titlepage]!/4/2/12[pgepubid00003]/3:0)
-    setLocation(epubcifi)
-    const [a, b] = [rendition.currentLocation().start.cfi, rendition.currentLocation().end.cfi]
-    // rendition.getRange(makeRangeCfi(a, b)).then(range => {
-    //     console.log(range.toString())
-    // })
-    // console.log(rendition.currentLocation().start.cfi)
-    console.log(rendition.getRange(makeRangeCfi(a, b)).toString());
+    if (!firstRenderDone) {
+      const getLastLocation = localStorage.getItem(props.book.Title_Author)
+      if(getLastLocation) {
+        setLocation(getLastLocation)
+        setFirstPageCFI(getLastLocation);
+      } else {
+        setFirstPageCFI(epubcifi);
+        const rendition = renditionRef.current;
+        // epubcifi is a internal string used by epubjs to point to a location in an epub. It looks like this: epubcfi(/6/6[titlepage]!/4/2/12[pgepubid00003]/3:0)
+        setLocation(epubcifi)
+        const [a, b] = [rendition.currentLocation().start.cfi, rendition.currentLocation().end.cfi]
+        // rendition.getRange(makeRangeCfi(a, b)).then(range => {
+        //     console.log(range.toString())
+        // })
+        // console.log(rendition.currentLocation().start.cfi)
+        // console.log(rendition.getRange(makeRangeCfi(a, b)).toString());
+        setCurrentLine(rendition.getRange(makeRangeCfi(a, b)).toString());
+        updateHistory(rendition.getRange(makeRangeCfi(firstPageCFI? firstPageCFI : a, b)).toString(),);
+      }
+      // setLocation(localStorage.getItem('book-progress')) // getItem returns null if the item is not found.
+      setFirstRenderDone(true)
+    }
+    else {
+      const rendition = renditionRef.current;
+      // epubcifi is a internal string used by epubjs to point to a location in an epub. It looks like this: epubcfi(/6/6[titlepage]!/4/2/12[pgepubid00003]/3:0)
+      setLocation(epubcifi)
+      const [a, b] = [rendition.currentLocation().start.cfi, rendition.currentLocation().end.cfi]
+      // rendition.getRange(makeRangeCfi(a, b)).then(range => {
+      //     console.log(range.toString())
+      // })
+      // console.log(rendition.currentLocation().start.cfi)
+      // console.log(rendition.getRange(makeRangeCfi(a, b)).toString());
+      setCurrentLine(rendition.getRange(makeRangeCfi(a, b)).toString());
+      localStorage.setItem(props.book.Title_Author, epubcifi);
+      updateHistory(rendition.getRange(makeRangeCfi(firstPageCFI? firstPageCFI : a, b)).toString());
+    }
   }
   
   const makeRangeCfi = (a, b) => {
@@ -60,7 +90,7 @@ const Reader = () => {
       <ReactReader
         location={location}
         locationChanged={locationChanged}
-        url="https://philclaude.s3.us-west-2.amazonaws.com/Euthopro.epub"
+        url={link}
         getRendition={rendition => {
           renditionRef.current = rendition
           rendition.themes.register('custom', {

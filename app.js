@@ -1,4 +1,5 @@
 require('dotenv').config()
+const path = require("path");
 const express = require('express'); // import express module (simplifies routing/requests, among other things)
 const cors = require('cors'); // import the CORS library to allow Cross-origin resource sharing
 const app = express(); // create an instance of the express module (app is the conventional variable name used)
@@ -32,9 +33,26 @@ app.post('/api/claude/msgBook', (req, res) => {
     services.sendMessageWithinBook(req, res);
 });
 
-app.get('/api/book/', (req, res) => {
-    services.getBook(req, res);
+// app.get('/api/book/', (req, res) => {
+//     services.getBook(req, res);
+// });
+
+app.get('/api/book/all', (req, res) => {
+    services.getAllBooks(req, res);
 });
+
+app.get('/api/user', (req, res) => {
+    services.getUser(req, res);
+});
+
+app.post('/api/user', (req, res) => {
+    services.saveUser(req, res);
+});
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+
 
 // app.get('/api/activities/delete', (req, res) => {
 //   services.deleteAllActivites(req, res);

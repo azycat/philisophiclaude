@@ -1,12 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Vollkorn');
-
 html, body, .root {
     height: 100%;
   }
   
 body, .App {
   text-align: center;
+  caret-color: transparent;
   /* background: white; */
+}
+
+input {
+  caret-color: auto;
 }
 
 body {
@@ -22,9 +25,14 @@ body {
     left: 0;
     z-index: -10;
     height: 66px;
+    display: flex;
 
     padding: 10px 0;
     font-family: Vollkorn;
+}
+
+.App-header > div{
+    flex: auto;
 }
 
 .App-header h1 {
@@ -50,13 +58,38 @@ body {
 
 @media (prefers-reduced-motion: no-preference) {
     .App-logo {
+      margin-bottom: 10px;
+      margin-right: 30px;
       animation: App-logo-spin infinite 20s linear;
     }
   }  
 
+.claude-switch {
+  margin-left: 30px;
+  text-align: left;
+  align-self: center;
+}
+
+.username-div {
+  flex: auto;
+  text-align: right;
+  align-self: center;
+}
+
+.username-div > input {
+  margin-right: 30px;
+  border-radius: 8px;
+  text-align: center;
+}
+
 /* Read book page */
-.read-book h3 {
-    padding: 5px 0 0;
+.read-book {
+    position: relative;
+}
+.read-book h2 {
+    padding: 20px 0px 10px;
+    margin-top: 10px;
+    /* margin: 5px; */
     font-family: Vollkorn;
 }
 .read-book-content {
@@ -70,20 +103,137 @@ body {
 }
 
 /* Chat panel */
-
 .chat-panel {
     height:100vh;
     background-color: #dedede;
-    border: 1px solid black;
-    flex-grow: 1
+    flex-grow: 1;
+    display:flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-panel h1 {
+    background-color: #262626;
+    overflow: visible;
+    width: 100%;
+    text-align: center;
+    color: white;
+    min-width: 25vw;
+    font-weight: 100;
+}
+
+.chat-panel-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    flex: 1 0 0;
+}
+
+.chat-panel-messages {
+    padding: 20px 0;
+    /* max-width: 900px; */
+    /* position: relative;  */
+    width: 100%;
+    margin: 0 auto;
+    list-style: none;
+    padding-left: 0;
+    flex-grow: 1;
+    overflow: auto;
+    overflow-y: scroll;
+}
+
+.Messages-message {
+    display: flex;
+    margin-top: 10px;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    text-align: left; 
+  }
+
+.Messages-message.userName {
+    justify-content: flex-end;
+    flex-direction: row;
+    text-align: right;
+  }
+
+.Message-content {
+    display: inline-block;
+}
+
+.Messages-list {
+    padding-right:1rem;
+}
+
+.userName > .Message-content {
+    align-items: flex-end;
+}
+
+.Messages-message > .avatar {
+    /* height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 10px -10px; */
+    margin: 0 10px 0;
+  }
+
+  .Message-content > .displayName {
+    display: block;
+    color: gray;
+    font-size: 14px;
+    padding-bottom: 4px;
+  }
+  
+  .Message-content > .text-content {
+    padding: 10px;
+    max-width: 400px;
+    margin: 0;
+    border-radius: 12px;
+    background-color: peru;
+    color: white;
+    display: inline-block;
+    white-space: pre-line
+  }
+
+.userName > .Message-content .text-content {
+    background-color: cornflowerblue;
+    white-space: pre-line
+  }
+
+.chat-panel-input-form {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 0 auto 40px;
+  }
+  
+.chat-panel-input-form > input{
+    /* padding: 5px; */
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid cornflowerblue;
+    flex-grow: 1;
+    flex:auto;
+}
+
+.chat-panel-input-form > button {
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: cornflowerblue;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-left: 10px;
 }
 
 /* Reader Panel */
 .reader-panel {
     /* height:500vh; */
-    min-height: 90vh;
-    width:500px;
-    
+    /* min-height: 90; */
+    min-width: 50vw; 
+    border: 1px solid black;
     flex-grow: 1
 }
 

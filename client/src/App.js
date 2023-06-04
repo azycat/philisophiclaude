@@ -6,6 +6,8 @@ import ReadBook from './components/ReadBook'
 import { Meepy } from './components/Meepy';
 
 import {  Route, Routes } from 'react-router-dom'
+import Book from './services/book'
+import User from './services/user'
 
 const bookshelves = [
     { key: 'unread', name: 'Start Reading'},
@@ -23,6 +25,24 @@ class App extends Component {
         error: false
     };
     componentDidMount = () => {
+        let promises = [];
+        promises.push(Book.getAllBooks());
+        Promise.all(promises).then( ([bookDB]) => {
+          bookDB.map((book) => {
+            // if(userDB && userDB.CurrentlyReadingBooksKeys && userDB.CurrentlyReadingBooksKeys.includes(book.Title_Author)) {
+            //   book.shelf = 'reading';
+            // }else {
+            //   book.shelf = 'unread'
+            // }
+            if(localStorage.getItem(book.Title_Author)){
+                book.shelf = 'reading';
+            } else{
+              book.shelf = 'unread';
+            }
+          })
+          if(Array.isArray(bookDB))this.setState({books: bookDB})
+        })
+        // Book.getAllBooks().then((books) => {if(Array.isArray(books))this.setState({books: books})});
         this.setState({ books: testBooks });
     };
 

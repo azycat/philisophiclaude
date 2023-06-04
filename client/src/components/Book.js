@@ -11,16 +11,16 @@ function Book(props) {
                 <div classname="book-top">
                 <div className="book-cover" style={{ width: 128, height: 193,
                     backgroundImage: `url(${
-                        book.image
-                            ? book.image
+                        book.Cover_Image_Link
+                            ? book.Cover_Image_Link
                             : 'img/Placeholder_book.svg'
                     })`
                     }}
-                    onClick={() => navigate(`book/${book.id}`)}
+                    onClick={() => navigate(`book/${book.Title_Author}`)}
                 />
             </div>
-                <div className="book-title">{book.title}</div>
-                <div className="book-author">{book.author ? book.author : 'Unknown Author'}</div>
+                <div className="book-title">{book.Title}</div>
+                <div className="book-author">{book.Author ? book.Author : 'Unknown Author'}</div>
             </div>
         </li> 
     )

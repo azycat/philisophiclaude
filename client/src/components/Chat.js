@@ -1,10 +1,11 @@
-import React,{Component} from 'react';
+import React,{Component, useEffect, useRef, useState} from 'react';
 import Claude from "../services/claude"
+import Messages from "./Messages";
 
 export class Chat extends Component {
     constructor(props) {
         super(props);
-        this.state = {message: "", chats: [], isTyping: false};
+        this.state = {message: "", chats: [],  isTyping: false};
     }
 
      sendMessage = async (e, message) => {
@@ -25,20 +26,21 @@ export class Chat extends Component {
         // }),
         // })
         Claude.sendMessageToClaudeBook({
-            book: "Euthopro", 
-            history: "", 
-            currentLine: "",
-            summary: summary,
-            user: "Wallo",
+            book: this.props.book.Title, 
+            history: this.props.history, 
+            currentLine: this.props.currentLine,
+            summary: this.props.book.Summary,
+            user: localStorage.getItem("username")? localStorage.getItem("username"): "User",
             message: message,
             msgHistory: this.state.chats
         })
         .then((response) => {
-            msgs.push({ role: "ai", content: response });
+            msgs.push({ role: "assistant", content: response });
             this.setState({
                 chats: msgs,
                 isTyping: false
-            })
+            },
+            () => this.scrollToMyRef())
             // scrollTo(0, 1e10);
         })
         .catch((error) => {
@@ -51,44 +53,98 @@ export class Chat extends Component {
             message: "",
             chats: msgs,
             isTyping: true
+        },
+        () => this.scrollToMyRef()
+        );
+    };
+
+    componentDidMount = () => {
+        // Initialize Claude
+        let initialMsg = `Hello, ${localStorage.getItem("username")? localStorage.getItem("username"): "User"}! My name is Philaude, I'm here to accompany you as a reading companion for ${this.props.book.Title} by ${this.props.book.Author}. Let's start on the first page together. :)\n\nPress the "Send Next Page" button any time you want me to update me on your current reading progress.` ;
+        let welcomeBackMsg = `Hello, ${localStorage.getItem("username")? localStorage.getItem("username"): "User"}! Welcome back to ${this.props.book.Title}. Shall we pick up where we left off?`;
+        let msgs = this.state.chats; 
+
+        const { book }= this.props;
+        const isNewBook = book.shelf === "unread";
+        const displayMsg = isNewBook ?
+            initialMsg : welcomeBackMsg;
+        
+
+        msgs.push({ role:"assistant", content: displayMsg});
+        this.setState({
+            chats: msgs,
+            isTyping:false
         })
     };
 
+    sendNextPage = (e) => {
+        e.preventDefault();
+        this.sendMessage(e, "*sends next page*");
+    };
+
+    // UI Stuff
+    chatContainer = React.createRef();
+
+    scrollToMyRef = () => {
+        const scroll =
+          this.chatContainer.current.scrollHeight -
+          this.chatContainer.current.clientHeight;
+        this.chatContainer.current.scrollTo(0, scroll);
+      };
+
     render () {
         let chats = this.state.chats;
+        const userName = localStorage.getItem("username")? localStorage.getItem("username"): "User";
+
         return (
+            //  Header Component
             <div className="chat-panel">
-            <h1>FullStack Chat AI Tutorial</h1>
-        
-            <section>
-                {chats && chats.length
-                ? chats.map((chat, index) => (
-                    <p key={index} className={chat.role === "user" ? "user_msg" : ""}>
-                        <span>
-                        <b>{chat.role.toUpperCase()}</b>
-                        </span>
-                        <span>:</span>
-                        <span>{chat.content}</span>
+            <h1>Symposium</h1>
+            <div className="chat-panel-content">
+
+                {/* Messages list component */}
+                <div ref={this.chatContainer} className="chat-panel-messages">
+                    <Messages
+                        // key={index} i dont really know what index is for sorry
+                        messages={chats}
+                        userName={userName}
+                    />
+
+                    {/* {chats && chats.length
+                    ? chats.map((chat, index) => (
+                        <p key={index} className={chat.role === "user" ? "user_msg" : ""}>
+                            <span>
+                            <b>{chat.role.toUpperCase()}</b>
+                            </span>
+                            <span>:</span>
+                            <span>{chat.content}</span>
+                        </p>
+                        ))
+                    : ""} */}
+                </div>
+            
+                <div className={this.state.isTyping ? "" : "hide"}>
+                    <p>
+                    <i>{this.state.isTyping ? "Typing..." : ""}</i>
                     </p>
-                    ))
-                : ""}
-            </section>
-        
-            <div className={this.state.isTyping ? "" : "hide"}>
-                <p>
-                <i>{this.state.isTyping ? "Typing" : ""}</i>
-                </p>
+                </div>
+                
+                {/* Message input component */}
+                <form className="chat-panel-input-form" action="" onSubmit={(e) => this.sendMessage(e, this.state.message)}>
+                    <input
+                    type="text"
+                    name="message"
+                    value={this.state.message}
+                    placeholder="Type a message here and hit Enter..."
+                    onChange={(e) => this.setState({message: e.target.value})}
+                    />
+                    <button
+                    type="button"
+                    onClick={(e) => this.sendNextPage(e)}
+                    >Send Next Page</button>
+                </form>
+
             </div>
-        
-            <form action="" onSubmit={(e) => this.sendMessage(e, this.state.message)}>
-                <input
-                type="text"
-                name="message"
-                value={this.state.message}
-                placeholder="Type a message here and hit Enter..."
-                onChange={(e) => this.setState({message: e.target.value})}
-                />
-            </form>
             </div>
         );
     }

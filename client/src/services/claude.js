@@ -17,7 +17,7 @@ const getNewActivity = () => { //test msg
 }
 // book, history, currentLine, summary, user, message , msgHistory, 
 const sendMessageToClaudeBook = (body) => {
-  const request = axios.post(`${baseUrl}/msgBook`, body);
+  const request = axios.post(`../${baseUrl}/msgBook`, body);
   
   return request.then(response => {
     console.log('this got sent back from the backend', response)
