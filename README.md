@@ -12,4 +12,4 @@ simple web application that utilizes an open book database to read philosophy cl
 - customize reader (dark/light mode, change margins and font)
 
 ### future features
-- search funcitonality (for now just have a few recommendations)/Applications/Kitty.app/Contents/MacOS/kitty --single-instance mvim -v /Users/struppi/beancount/inúÿ
+- search funcitonality (for now just have a few recommendations)
