@@ -22,3 +22,4 @@ simple web application to read philosophy classics with claude.
 - refreshing while reading a book temporarily makes library disappear. can recover data by refreshing on homepage
 - friendlier claude toggle not working as intended
 - need to improve prompt to make claude's responses more consistent. currently he responds to system prompts too often :s
+- reading history is buggy; current page is accidentally set to the last page in the reading history, *not* the current page that the user is actually looking at.
