@@ -24,6 +24,7 @@ simple web application to read philosophy classics with claude.
 - save chat history
 - resize chat panel
 - settings page to configure philaude's behavior for different experience levels
+- add button to reset user reading history!!!!
 
 ### known bugs
 - refreshing while reading a book temporarily makes library disappear, books wont load. can recover data by refreshing the homepage
