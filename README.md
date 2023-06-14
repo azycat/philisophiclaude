@@ -2,14 +2,23 @@
 # philosophiclaude
 
 
-simple web application that utilizes an open book database to read philosophy classics with claude.
+simple web application to read philosophy classics with claude.
 
-### planned features
-- claude follows the user line-by-line as they read books
-- chat interface on the side to ask questions and spark light discussions
+### features
+- e-reader/AI chat integration
+- claude reads page-by-page with user
 - each book corresponds to a unique session with claude
-- store previously read books in a database. have claude make connections across books that user has read
-- customize reader (dark/light mode, change margins and font)
+- store previously read books in a database.
 
 ### future features
 - search funcitonality (for now just have a few recommendations)
+- highlight and save lines
+- expand reader functionality/customization
+- have claude make connections across books that user has read
+- utilize an open book database to automatically populate library
+- improve UI
+
+### known bugs
+- refreshing while reading a book temporarily makes library disappear. can recover data by refreshing on homepage
+- friendlier claude toggle not working as intended
+- need to improve prompt to make claude's responses more consistent. currently he responds to system prompts too often :s
